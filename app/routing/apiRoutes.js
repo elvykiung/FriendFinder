@@ -1,20 +1,20 @@
-// Displays all characters
-app.get('/api/friends', function(req, res) {
-  return res.json(characters);
-});
+// LOAD DATA
+// We are linking our routes to a series of "data" sources.
+// These data sources hold arrays of information on table-data, waitinglist, etc.
 
-app.post('/api/friends', function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var newfriend = req.body;
+var friendsData = require('../data/friends');
 
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newfriend.routeName = newfriend.name.replace(/\s+/g, '').toLowerCase();
+module.exports = function(app) {
+  // API GET Requests
+  app.get('/api/friends', function(req, res) {
+    return res.json(friendsData);
+  });
 
-  console.log(newfriend);
+  app.post('/api/friends', function(req, res) {
+    var newfriend = req.body;
 
-  characters.push(newfriend);
+    friends.push(newfriend);
 
-  res.json(newfriend);
-});
+    res.json(newfriend);
+  });
+};
