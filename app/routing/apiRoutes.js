@@ -27,8 +27,6 @@ module.exports = function(app) {
       var currentFriend = friends[i];
       totalDifference = 0;
 
-      console.log(currentFriend.name);
-
       //nested loop for friend score
       for (var j = 0; j < currentFriend.scores.length; j++) {
         var currentFriendScore = currentFriend.scores[j];
